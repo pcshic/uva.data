@@ -1,0 +1,9 @@
+{
+  "name": "uva.data",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "sprintf-js": "^1.0.3",
+    "yamljs": "^0.2.4"
+  }
+}

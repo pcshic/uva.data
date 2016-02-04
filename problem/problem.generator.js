@@ -1,17 +1,12 @@
-var is      = require('is');
-var fs      = require('fs');
-var YAML    = require('yamljs');
-var sprintf = require('sprintf-js').sprintf;
+var is      = require('is'),
+    fs      = require('fs'),
+    YAML    = require('yamljs'),
+    sprintf = require('sprintf-js').sprintf;
 
 var defaultHref = function(id) { return id }
 
 function OnlineJudge() {
-  this.list = {
-    '': {
-      name: '',
-      href: defaultHref
-    }
-  }
+  this.list = { '': { name: '', href: defaultHref } }
 }
 OnlineJudge.prototype.register = function(judge, data) {
   var oj = this;
@@ -39,10 +34,9 @@ OnlineJudge.prototype.makeProblemTitle = function(prob) {
       if (key === 'title' || key === 'description')
         return '';
       // get judge and id
-      var judge, id;
+      var id    = '',
+          judge = oj.list[''];
       if ( is.undef(oj.list[key]) ) {
-        id    = '';
-        judge = oj.list[''];
         console.warn('Unknown judge type: ' + key);
       }
       else {
@@ -58,14 +52,13 @@ OnlineJudge.prototype.makeProblemTitle = function(prob) {
   else {
     console.error('Error: prob is not object. prob: ' + JSON.stringify(prob));
   }
-  if (is.undef(prob.title)) {
+  if ( is.undef(prob.title) ) {
     prob.title = '';
     console.warn('Problem no title: ' + ids.join(' / '));
   }
   return sprintf('\\textbf{\\textit{%s: %s}}', content.join(' / '), prob.title);
 }
 
-var JUDGE = new OnlineJudge();
 /*
 uva: UVa
 zj: ZeroJudge
@@ -73,6 +66,8 @@ pku: PKU
 hdu: HDU
 ural: Ural
 */
+var JUDGE = new OnlineJudge();
+
 JUDGE
 .register('uva', {
   name: 'UVa',
@@ -107,6 +102,7 @@ var generateFile = function(file) {
     var sections = file[chap].section;
     sections.map(function (sect) {
       var eMsg, fileName;
+      // filename
       if (is.undef(sect.title)) {
         sect.title = '';
         eMsg = sprintf('Error: no section title. Chapter: %s', chap);
@@ -116,7 +112,7 @@ var generateFile = function(file) {
         eMsg = sprintf('Error: no file name. Chapter: %s, section: %s', chap, sect.title);
         console.error(eMsg);
       }
-      fileName = sprintf('%s-%s.tex', chap, sect.file);
+      fileName = 'store/' + sprintf('%s-%s.tex', chap, sect.file);
 
       var content = [];
       // exercises
@@ -151,5 +147,5 @@ var generateFile = function(file) {
   })
 }
 
-generateFile( YAML.load('problem.yml') );
-generateFile( YAML.load('basic_problem.yml') );
+generateFile( YAML.load('problem.list.yml') );
+generateFile( YAML.load('basic.problem.list.yml') );
