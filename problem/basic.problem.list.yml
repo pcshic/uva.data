@@ -15,7 +15,7 @@
     exercises:
     - uva: 10055
       title: "Hashmat the brave warrior"
-      description: "取絕對值有兩種做法，一種是用 if 判斷；另一種是呼叫函數 abs() 就好了。abs() 函數被定義在 <cstdlib> 中，雖然沒有 include 在 Visual C++ 依然能編譯過，但是上傳時因為編譯器的原因會導致編譯錯誤 (Compilation Error, CE)。"
+      description: "取絕對值有兩種做法，一種是用 \\lstinline!if! 判斷；另一種是呼叫函數 \\lstinline!abs()! 就好了。\\lstinline!abs()! 函數被定義在 \\lstinline!<cstdlib>! 中，雖然沒有 \\lstinline!#include! 在 Visual C++ 依然能編譯過，但是上傳時因為編譯器的原因會導致\\index{編譯錯誤}{\\textbf{編譯錯誤}} (Compilation Error, CE)。\\\\另外要注意這一題的整數型態需用 \\lstinline!long long!，用 \\lstinline!int! 會造成「\\index{溢位}{溢位現象}」，這個原因會在後面說明。"
     - uva: 11172
       title: "Relational Operators"
       description: "能夠理解題意就不難解決此道問題。"
