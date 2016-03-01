@@ -10,6 +10,9 @@
     - uva: 10300
       title: "Ecological Premium"
       description: "一樣能讀懂題意就不難寫。"
+    - uva: 11547
+      title: "Automatic Answer"
+      description: "計算 $(n\\times{567}\\div{9}+7492)\\times{235}\\div{47}-498$"
   - file: "comparison-and-logical"
     title: "比較和邏輯運算子"
     exercises:
